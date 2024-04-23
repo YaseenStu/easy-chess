@@ -29,6 +29,9 @@ function App() {
           <li className="mb-2">
             <a href="/" className="text-gray-300 hover:text-white">Collection 3</a>
           </li>
+          <li className="mb-2">
+            <a href="/" className="text-gray-300 hover:text-white">Collection 3</a>
+          </li>
         </ul>
       </aside>
 
