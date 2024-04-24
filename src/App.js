@@ -1,71 +1,62 @@
-import React, { useState } from 'react';
-import { FiMenu } from 'react-icons/fi'; // Importing the menu icon from react-icons
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import HomePage from './HomePage';
+import About from './About';
+import Learn from './Learn';
+import PlayVsComputer from './components/PlayVsComputer';
+import PlayVsPlayer from './components/PlayVsPlayer';
+import PracticePage from './components/PracticePage';
+import SettingsIcon from './images/settings.png'; // Import your settings icon
+import HomeIcon from './images/home.png'; // Import your home icon
+import LearnIcon from './images/learn.png'; // Import your learn icon
+import AboutIcon from './images/about.png'; // Import your about icon
+import Logo from './images/logo.jpg'; // Import your logo
 
-function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
+const App = () => {
   return (
-    <div className="flex overflow-hidden h-full min-h-screen"> {/* Full viewport height and overflow handled */}
-      {/* Sidebar */}
-      <aside className={`bg-gray-800 text-white p-4 fixed inset-y-0 left-0 transform ${isSidebarOpen ? 'translate-x-0' : `-translate-x-64`} transition-transform duration-300 ease-in-out w-64 z-30`}>
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold mb-4">Collections</h2>
-          {/* Toggle Icon inside the sidebar always visible when open */}
-          <button onClick={toggleSidebar} className="text-white focus:outline-none">
-            <FiMenu size={24} />
-          </button>
-        </div>
-        <ul>
-          <li className="mb-2">
-            <a href="/" className="text-gray-300 hover:text-white">Collection 1</a>
-          </li>
-          <li className="mb-2">
-            <a href="/" className="text-gray-300 hover:text-white">Collection 2</a>
-          </li>
-          <li className="mb-2">
-            <a href="/" className="text-gray-300 hover:text-white">Collection 3</a>
-          </li>
-          <li className="mb-2">
-            <a href="/" className="text-gray-300 hover:text-white">Collection 3</a>
-          </li>
-        </ul>
-      </aside>
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        <nav className="bg-white shadow">
+          <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+            {/* Left side icons */}
+            <div className="flex items-center space-x-4">
+              <NavLink to="/" className="p-1"><img src={HomeIcon} alt="Home" className='h-8 w-8'/></NavLink>
+              <NavLink to="/learn" className="p-1"><img src={LearnIcon} alt="Learn" className='h-8 w-8'/></NavLink>
+              <NavLink to="/about" className="p-1"><img src={AboutIcon} alt="About" className='h-8 w-8'/></NavLink>
+            </div>
 
-      {/* Main Content + Navbar (Wrapped in a container that moves with the sidebar) */}
-      <div className="flex flex-col flex-1 min-h-screen">
-        {/* Navigation Bar */}
-        <nav className="bg-blue-500 p-4 w-full flex justify-between items-center">
-          {/* Menu Icon on the Navbar, only visible when sidebar is closed */}
-          {!isSidebarOpen && (
-            <button onClick={toggleSidebar} className="text-white focus:outline-none z-40">
-              <FiMenu size={24} />
-            </button>
-          )}
-          <ul className="flex">
-            {/* Navigation Links */}
-            <li><a href="/" className="text-white hover:text-gray-200 mx-4">Home</a></li>
-            <li><a href="/learn" className="text-white hover:text-gray-200 mx-4">Learn</a></li>
-            <li><a href="/about" className="text-white hover:text-gray-200 mx-4">About</a></li>
-          </ul>
-        </nav>
-        {/* Main Header */}
-        <header className="bg-blue-500 text-white p-4 w-full">
-          <h1 className="text-3xl">Welcome to React with Tailwind CSS!</h1>
-          <p className="mt-2">This is a sample React component styled with Tailwind CSS.</p>
-        </header>
-        {/* Main Content */}
-        <main className="container mx-auto mt-8 flex-1">
-          <div className="p-4 bg-gray-200">
-            <p className="text-lg">Start building your awesome React app with Tailwind CSS!</p>
+            {/* Center logo */}
+            <div className="flex items-center justify-center">
+              <img src={Logo} alt="Easy Chess" className="rounded-full bg-gray-200 h-12 w-12 flex items-center justify-center" />
+              <span className="font-bold text-xl ml-2">Easy Chess</span>
+            </div>
+
+            {/* Right side settings icon */}
+            <div>
+              <NavLink to="/settings"><img src={SettingsIcon} alt="Settings" className="h-8 w-8" /></NavLink>
+            </div>
           </div>
-        </main>
+        </nav>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/play-vs-computer" element={<PlayVsComputer />} />
+          <Route path="/play-vs-player" element={<PlayVsPlayer />} />
+          <Route path="/practice" element={<PracticePage />} />
+        </Routes>
+
+        <footer className="bg-white border-t border-gray-400 shadow">
+          <div className="container mx-auto px-6 py-4">
+            <div className="text-center">
+              <p className="text-gray-600">&copy; 2024 Easy Chess. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
       </div>
-    </div>
+    </Router>
+
   );
-}
+};
 
 export default App;
