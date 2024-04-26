@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import HomePage from './HomePage';
-import About from './About';
-import Learn from './Learn';
+import HomePage from './components/HomePage';
+import About from './components/About';
+import Learn from './components/Learn';
 import PlayVsComputer from './components/PlayVsComputer';
 import PlayVsPlayer from './components/PlayVsPlayer';
 import PracticePage from './components/PracticePage';

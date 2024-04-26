@@ -126,6 +126,7 @@ const PlayVsComputer = () => {
 
     if (result === null) {
       alert('Invalid move. Please try again.');
+      
     }
   };
 
