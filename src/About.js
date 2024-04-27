@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutImage from '../images/chess-about.png'
+import AboutImage from './images/chess-about.png'
 const About = () => {
   return (
     <div className="container mx-auto px-6 py-8">

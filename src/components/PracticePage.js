@@ -4,7 +4,6 @@ import { Chessboard } from 'react-chessboard';
 
 const PracticePage = () => {
   const [game, setGame] = useState(new Chess());
-  const [fen, setFen] = useState('start');
 
   const onDrop = (sourceSquare, targetSquare) => {
     const move = {
@@ -34,26 +33,24 @@ const PracticePage = () => {
 
   return (
     <div>
-        <h2 className="text-2xl font-bold mb-4 text-center ">Practice Chess</h2>
-    <div className="container mx-auto p-8 flex flex-col items-center justify-center">
+      <h2 className="text-2xl font-bold mb-4 text-center ">Practice Chess</h2>
+      <div className="container mx-auto p-8 flex flex-col items-center justify-center">
 
-      <div className="flex flex-row items-start justify-center">
-        <Chessboard
-          position={game.fen()}
-          onPieceDrop={onDrop}
-          boardWidth={500}
-          customBoardStyle={{
-            borderRadius: '5px',
-            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
-          }}
-        />
-        <div className="ml-4 text-lg font-semibold text-center">{getStatusText()}</div>
+        <div className="flex flex-row items-start justify-center">
+          <Chessboard
+            position={game.fen()}
+            onPieceDrop={onDrop}
+            boardWidth={500}
+            customBoardStyle={{
+              borderRadius: '5px',
+              boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
+            }}
+          />
+          <div className="ml-4 text-lg font-semibold text-center">{getStatusText()}</div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
 
 export default PracticePage;
-{/* <div className="ml-4">
-<div className="text-center text-lg font-semibold mt-4">{getStatusText()}</div> */}

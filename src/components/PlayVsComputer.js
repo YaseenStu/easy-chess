@@ -3,7 +3,7 @@ import { Chess } from 'chess.js';
 import { Chessboard } from 'react-chessboard';
 
 const difficultyLevels = {
-  'Easy': { depth: 2, randomness: 0.5 },
+  'Easy': { depth: 2, randomness: 0.6 },
   'Medium': { depth: 3, randomness: 0.2 },
   'Hard': { depth: 4, randomness: 0 }
 };
@@ -36,22 +36,28 @@ const PlayVsComputer = () => {
     const moves = game.moves();
     let bestMove = null;
     let bestValue = maximizingPlayer ? -Infinity : Infinity;
-
-    const randomizedMoves = moves.sort(() => Math.random() - randomness);
-
-    for (const move of randomizedMoves) {
+  
+    // Adjust how randomness affects move choice
+    const weightedMoves = moves.map(move => {
+      return { move, weight: Math.random() - randomness };
+    });
+  
+    weightedMoves.sort((a, b) => a.weight - b.weight);
+  
+    for (const { move } of weightedMoves) {
       const newGame = new Chess(game.fen());
       newGame.move(move);
       const value = minimax(newGame, depth - 1, -Infinity, Infinity, !maximizingPlayer);
-
+  
       if ((maximizingPlayer && value > bestValue) || (!maximizingPlayer && value < bestValue)) {
         bestValue = value;
         bestMove = move;
       }
     }
-
+  
     return bestMove;
   };
+  
 
   const minimax = (game, depth, alpha, beta, maximizingPlayer) => {
     if (depth === 0 || game.isCheckmate() || game.isDraw()) {
@@ -158,16 +164,14 @@ const PlayVsComputer = () => {
           position={game.fen()}
           onPieceDrop={onDrop}
           boardWidth={500}
-          // customDarkSquareStyle={{ backgroundColor: '#779952' }}
-          // customLightSquareStyle={{ backgroundColor: '#edeed1' }}
           customBoardStyle={{
             borderRadius: '5px',
             boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
           }}
         />
-        <div className="ml-4">
-        <div className="text-lg font-semibold mb-2">{getStatusText()}</div>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded mb-2" onClick={resetGame}>
+        <div className="ml-2">
+        <div className="text-xl font-bold mb-4">{getStatusText()}</div>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded mb-4" onClick={resetGame}>
             Reset
           </button>
           <div className="mt-2">

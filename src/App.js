@@ -1,11 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import About from './components/About';
-import Learn from './components/Learn';
+import HomePage from './HomePage';
+import About from './About';
+import Learn from './Learn';
 import PlayVsComputer from './components/PlayVsComputer';
 import PlayVsPlayer from './components/PlayVsPlayer';
 import PracticePage from './components/PracticePage';
+import ChessBasics from './components/ChessBasics';
+import ChessTactics from './components/ChessTactics';
+import ChessOpenings from './components/ChessOpenings ';
+
+import SicilianDefense from './components/openings/SicilianDefence';
+import FrenchDefense from './components/openings/FrenchDefense';
+
 import SettingsIcon from './images/settings.png'; // Import your settings icon
 import HomeIcon from './images/home.png'; // Import your home icon
 import LearnIcon from './images/learn.png'; // Import your learn icon
@@ -20,9 +27,9 @@ const App = () => {
           <div className="container mx-auto px-6 py-3 flex justify-between items-center">
             {/* Left side icons */}
             <div className="flex items-center space-x-4">
-              <NavLink to="/" className="p-1"><img src={HomeIcon} alt="Home" className='h-8 w-8'/></NavLink>
-              <NavLink to="/learn" className="p-1"><img src={LearnIcon} alt="Learn" className='h-8 w-8'/></NavLink>
-              <NavLink to="/about" className="p-1"><img src={AboutIcon} alt="About" className='h-8 w-8'/></NavLink>
+              <NavLink to="/" className="p-1"><img src={HomeIcon} alt="Home" className='h-8 w-8' /></NavLink>
+              <NavLink to="/learn" className="p-1"><img src={LearnIcon} alt="Learn" className='h-8 w-8' /></NavLink>
+              <NavLink to="/about" className="p-1"><img src={AboutIcon} alt="About" className='h-8 w-8' /></NavLink>
             </div>
 
             {/* Center logo */}
@@ -44,6 +51,14 @@ const App = () => {
           <Route path="/play-vs-computer" element={<PlayVsComputer />} />
           <Route path="/play-vs-player" element={<PlayVsPlayer />} />
           <Route path="/practice" element={<PracticePage />} />
+          
+          <Route path="/chess-basics" element={<ChessBasics />} />
+          <Route path="/chess-tactics" element={<ChessTactics />} />
+
+          <Route path="/chess-openings" element={<ChessOpenings />} />
+          
+          <Route path="/openings/sicilian-defense" element={<SicilianDefense />} />
+          <Route path="/openings/french-defense" element= {<FrenchDefense />} />
         </Routes>
 
         <footer className="bg-white border-t border-gray-400 shadow">
