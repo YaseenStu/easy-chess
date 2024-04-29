@@ -10,7 +10,7 @@ const KingIndianAttack = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/QhdoA4EvMzI"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,12 @@ const KingIndianAttack = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The King's Indian Attack is a flexible, system-like opening used by White, beginning typically with 1.Nf3, 2.g3, followed by Bg2, and O-O. It can be played against various Black setups, providing White with a solid structure and the potential for a strong kingside offensive. The setup mirrors the strategic ideas of the King's Indian Defense but from the white side, focusing on control of the e5-square and preparation for a central or kingside pawn advance.
+          The King's Indian Attack is a flexible, system-like opening used by White, 
+          beginning typically with 1.Nf3, 2.g3, followed by Bg2, and O-O. It can be played 
+          against various Black setups, providing White with a solid structure and the potential 
+          for a strong kingside offensive. The setup mirrors the strategic ideas of the King's 
+          Indian Defense but from the white side, focusing on control of the e5-square and preparation 
+          for a central or kingside pawn advance.
           </p>
         </div>
       </div>

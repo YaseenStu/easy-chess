@@ -10,7 +10,7 @@ const LondonSystem = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/49H728S_VjM"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,11 @@ const LondonSystem = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The London System is a system opening that White can play against virtually any of Black's setups. It starts typically with d4 followed by Nf3, Bf4, e3, c3, and Bd3. This opening is renowned for its solidity and requires minimal theoretical knowledge compared to more mainstream openings. It leads to a slow buildup and strategic gameplay, making it a favorite among club players and grandmasters alike.
+          The London System is a system opening that White can use against nearly all of 
+          Black's setups. It usually starts with d4, followed by Nf3, Bf4, e3, c3, and Bd3. 
+          This opening is well-known for its soundness, and it requires less theoretical understanding 
+          than more mainstream openings. It encourages gradual development and strategic games, making it 
+          popular among both club players and grandmasters.          
           </p>
         </div>
       </div>

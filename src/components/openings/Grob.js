@@ -10,7 +10,7 @@ const Grob = () => {
                 <div className="flex-initial w-2/3">
                     <iframe
                         width="100%"
-                        height="450"  // Increased height for better visibility
+                        height="450"
                         src="https://www.youtube.com/embed/6u60XEgTAAg"
                         title="Sicilian Defense Tutorial"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,11 @@ const Grob = () => {
                 </div>
                 <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
                     <p className="text-xl text-gray-700">
-                        The Grob Opening starts with 1.g4, known as one of the more eccentric and less common openings, intending to disrupt normal piece development and pawn structure from the very first move. Although not commonly seen at the top levels of play, it can lead to extremely sharp games with chances for both sides, often favoring the prepared player.
+                    The Grob Opening, one of the more unusual and uncommon opening moves, 
+                    begins with 1.g4. Its goal is to disturb the standard pawn structure and piece 
+                    development from the very first move. At the highest levels of play, it is uncommon, 
+                    but it can result in very crisp games with opportunities for both players, usually in 
+                    favor of the well-prepared player.                    
                     </p>
                 </div>
             </div>

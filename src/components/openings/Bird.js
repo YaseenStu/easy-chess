@@ -18,8 +18,12 @@ const Bird = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          Bird's Opening starts with 1.f4, aiming for a king’s-side attack similar to the Dutch Defense but from White's perspective. It leads to aggressive and unbalanced games, with strategies revolving around the control and breakthrough at e5. This opening is suited for players looking for complex strategic fights and willing to take on slightly inferior positions for dynamic play.
-          </p>
+          Beginning with 1.f4, the Bird's Opening seeks to launch a king's-side attack from White's position
+           that is similar to the Dutch Defense. As a result, games become aggressive and unbalanced, with 
+           strategies centered around control and breakthrough at e5. Players seeking intricate strategic 
+           battles and prepared to accept somewhat weaker positions in exchange for lively play might 
+           consider this opening.
+  </p>
 
         </div>
       </div>

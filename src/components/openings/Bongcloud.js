@@ -19,7 +19,12 @@ const Bongcloud = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Bongcloud Attack is a somewhat unconventional and often humorous chess opening, which involves an early advance of the king to e2 with the moves 1.e4 e5 2.Ke2. This move is typically seen as an infringement of classical opening principles, which advise against early king movements. The primary appeal of the Bongcloud is not rooted in its strategic soundness but rather in its shock value and the challenge it poses to conventional chess norms.          </p>
+          Using the moves 1.e4 e5 2.Ke2, the king advances early to e2 in the rather unusual and frequently 
+          comical Bongcloud Attack chess opening. Conventional opening principles advise avoiding making early 
+          king movements, and this move is generally regarded as a violation of such guidelines. The main 
+          attraction of the Bongcloud is not its strategic soundness, but rather its shock value and the 
+          disruption it brings to traditional chess conventions.   
+          </p>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const Pirc = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/cd6PjqBm-vA"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,11 @@ const Pirc = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Pirc Defense is characterized by the moves 1.e4 d6 2.d4 Nf6 3.Nc3 g6, allowing White to establish a broad pawn center with the idea for Black to undermine and attack it from a hypermodern setup. It can lead to varied structures, often with opposite-sided castling and mutual attacks, making it a dynamic choice for counter-attacking players.
+          The Pirc Defense is described by the movements 1.e4 d6, 2.d4 Nf6, 
+          and 3.Nc3 g6, which allow White to establish a large pawn center 
+          that Black can undermine and assault from a hypermodern position. It may 
+          produce a number of structures, including opposite-sided castling and mutual 
+          attacks, making it an adaptable alternative for counter-attacking players.
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@ const QueenGAccepted = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/6a5p8flI5wc"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,10 @@ const QueenGAccepted = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          In the Queen's Gambit Accepted, Black chooses to accept the gambit pawn offered by White with 1.d4 d5 2.c4 dxc4. This opening leads to an asymmetrical pawn structure and gives Black free development and solid structural foundations at the cost of a central pawn. It requires precise play from both sides and offers rich middle-game and endgame potential.
+          In the Queen's Gambit Accepted, Black accepts White's gambit pawn with 1.d4 d5. 2.c4 dxc4. 
+          This opening creates an asymmetrical pawn structure, allowing Black to expand freely and establish 
+          solid structural foundations at the expense of a center pawn. It necessitates careful play on both 
+          sides and has great middle-game and endgame potential.
           </p>
         </div>
       </div>

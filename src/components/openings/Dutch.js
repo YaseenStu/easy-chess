@@ -10,7 +10,7 @@ const Dutch = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/ogmGNIk6W7I"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,11 @@ const Dutch = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Dutch Defense is a fighting response to 1.d4, characterized by the move 1...f5. This opening aims to control the e4-square and prepare for kingside attacks. The Dutch can lead to highly tactical games or solid strategic contests, depending on variations like the Stonewall, Classical, or Leningrad Dutch. It is well-regarded for its aggressive and unorthodox nature, offering Black chances to seize the initiative from the outset.
+          The move 1...f5 defines the Dutch Defense, which is a combative answer to 1.d4. 
+          In order to control the e4-square and get ready for kingside attacks, this opening is played. 
+          Depending on variants like the Stonewall, Classical, or Leningrad Dutch, the Dutch can result in very 
+          tactical games or strong strategic contests. It is highly praised for being aggressive and unconventional, 
+          giving Black people opportunities to take the lead right away.
           </p>
         </div>
       </div>

@@ -19,7 +19,12 @@ const Catalan = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          Initiated with 1.d4 Nf6 2.c4 e6 3.g3, the Catalan Opening is a blend of the Queen's Gambit and Reti Opening, offering White a broad control of the center while fianchettoing the king's bishop. This opening is known for its enduring pressure in the center and on the queenside, leading to positions rich in both strategy and tactics. The Catalan is a favorite at the highest levels for its solidity and dynamic potential.
+          The Queen's Gambit and Reti Opening are combined to create the Catalan Opening, which gives 
+          White a large amount of center control while fianchettingtoing the king's bishop. It is opened 
+          with 1.d4 Nf6 2.c4 e6 3.g3. The persistent pressure in the center and on the queenside of this 
+          opening is well-known for producing positions that are strong in both strategy and tactics. Because 
+          of its stability and dynamic potential, the Catalan is favored at the top levels.
+
           </p>
         </div>
       </div>

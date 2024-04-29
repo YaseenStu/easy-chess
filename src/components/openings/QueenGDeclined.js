@@ -10,7 +10,7 @@ const QueenGDeclined = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/ZEQWwuAa2-o"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,11 @@ const QueenGDeclined = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Queen's Gambit Declined is characterized by the moves 1.d4 d5 2.c4 e6, providing a solid and robust structure by keeping the central d5 pawn supported. It is known for its classical relevance and strategic depth, offering Black a compact structure with the potential for gradual freeing moves. It branches into many variations, such as the Orthodox, Ragozin, and Lasker, each contributing to its deep theory.
+          The Queen's Gambit Declined is defined by the movements 1.d4 d5 2.c4 e6, 
+          which create a solid and robust framework by supporting the central d5 pawn. 
+          It is noted for its classical significance and strategic depth, providing Black 
+          with a compact structure that allows for gradual freeing actions. It has various 
+          varieties, including Orthodox, Ragozin, and Lasker, all of which contribute to its deep theory.
           </p>
         </div>
       </div>

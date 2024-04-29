@@ -10,7 +10,7 @@ const ItalianGame = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/MhNs8GLo894"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,12 @@ const ItalianGame = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Italian Game is initiated with the moves 1.e4 e5 2.Nf3 Nc6 3.Bc4, focusing on a rapid development and control of the center. This classical opening is one of the oldest in chess, characterized by its open and tactical gameplay. It sets the stage for both players to fight for the center without committing to aggressive maneuvers too early. Key variations include the Giuoco Piano and the Two Knights Defense, each leading to rich middle-game positions.
+          The opening movements of the Italian game are 1.e4 e5 2.Nf3 Nc6 3.Bc4, 
+          with an emphasis on quick center growth and control. One of the oldest openings 
+          in chess, this classical style is distinguished by its open and strategic play. It 
+          creates the conditions for both players to compete for the center without having to 
+          rush into any rough play. Rich middle-game positions can be reached with both the Giuoco 
+          Piano and the Two Knights Defense key variations.          
           </p>
         </div>
       </div>

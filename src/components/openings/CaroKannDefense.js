@@ -19,7 +19,11 @@ const CaroKannDefense = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Caro-Kann Defense, beginning with 1.e4 c6, is known for its solid and robust structure. It allows Black to support the central advance ...d5, on the next move, aiming for a symmetrical and stable pawn structure. The Caro-Kann is favored by players who prefer a sound positional foundation over complex tactical skirmishes. Notable variations like the Classical, Advance, and Panov-Botvinnik Attack offer diverse strategic play.
+          The Caro-Kann Defense is renowned for its strong and stable structure, which starts with 1.e4 c6. 
+          In the next move, Black might support the center advance...d5, aiming for a stable and symmetrical 
+          pawn structure. Players that prioritize solid positional foundation over intricate tactical clashes tend 
+          to favor the Caro-Kann. Diverse strategic play is provided by notable variants including as the Classical, 
+          Advance, and Panov-Botvinnik Attack.
           </p>
         </div>
       </div>

@@ -18,7 +18,10 @@ const Benko = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          Initiated by 1.d4 Nf6 2.c4 c5 3.d5 b5, the Benko Gambit sacrifices a pawn for significant long-term pressure on the queenside. Black aims for active play and control of the a and b files with rooks, providing compensation for the material deficit. This opening is popular among aggressive players seeking dynamic chances against White's setup.
+          The Benko Gambit, which is started by 1.d4 Nf6 2.c4 c5 3.d5 b5, gives up a pawn in exchange for 
+          considerable long-term pressure on the queenside. In order to make up for the material delays, 
+          black attempts to actively play and gain control of the a and b files with rooks. Those who are 
+          proactive and looking for dynamic opportunities against White's setup often start with this opening.
           </p>
         </div>
       </div>

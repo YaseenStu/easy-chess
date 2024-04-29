@@ -10,7 +10,7 @@ const FrenchDefense = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/5pec-u6PSvA"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,7 +19,12 @@ const FrenchDefense = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The French Defense, initiated with 1.e4 e6, is noted for its solidity and resilience. It allows Black to challenge White's center while maintaining a strong pawn chain from d5 to e6. The French Defense often leads to closed structures, where Black seeks counterplay on the queenside while defending the kingside. Key variations include the Winawer, Tarrasch, and the Classical, each offering different plans and pawn structures catering to diverse strategic tastes.
+          The French Defense is renowned for its strength and durability, especially 
+          after starting with 1.e4 e6. By keeping up a solid pawn chain from d5 to e6, 
+          Black can threaten White's core. When Black tries to counterplay on the queenside 
+          while defending the kingside, the French Defense typically results in closed constructions. 
+          The Winawer, Tarrasch, and Classical are notable variations that provide various pawn layouts 
+          and strategies to suit varying tactical inclinations.          
           </p>
         </div>
       </div>

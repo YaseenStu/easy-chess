@@ -8,7 +8,6 @@ const Learn = () => {
   const { theme } = useContext(ThemeContext); 
   const navigate = useNavigate();
 
-  // Function to navigate to different pages
   const navigateTo = (path) => {
     navigate(path);
   };

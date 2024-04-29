@@ -10,7 +10,7 @@ const SicilianDefense = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/qM4e7g2RukI"
             title="Sicilian Defense Tutorial"
             frameBorder="0"

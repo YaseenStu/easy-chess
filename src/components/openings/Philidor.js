@@ -10,7 +10,7 @@ const Philidor = () => {
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
+            height="450"
             src="https://www.youtube.com/embed/bZl0phd70l4"
             title="Sicilian Defense Tutorial"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -19,8 +19,12 @@ const Philidor = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          The Philidor Defense arises after 1.e4 e5 2.Nf3 d6, offering solid if somewhat passive defense against White's opening play. It aims for a strong pawn structure and prepares to undermine White’s center from a secure setup. This defense can lead to slow maneuvering games with opportunities for both sides to fight for a long-term strategic advantage.
-          </p>
+          The Philidor Defense appears after 1.e4 e5 2.Nf3 d6, providing good, 
+          if somewhat passive, defense against White's first move. It aims for a 
+          strong pawn structure and plans to damage White's center from a comfortable 
+          position. This defense can result in lengthy maneuvering games where both sides
+           can compete for a long-term strategic edge.          
+           </p>
         </div>
       </div>
     </div>

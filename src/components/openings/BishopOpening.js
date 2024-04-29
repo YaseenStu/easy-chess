@@ -19,7 +19,10 @@ const BishopOpening = () => {
         </div>
         <div className="flex-initial w-1/3 bg-white rounded-lg shadow-lg p-6">
           <p className="text-xl text-gray-700">
-          Bishop's Opening begins with the moves 1.e4 e5 2.Bc4, directly targeting the weak f7 square early in the game. This opening is a precursor to many Italian Game lines and offers White the flexibility to steer the game into either open or closed structures. The focus is on piece development and central control, aiming to create immediate problems for Black to solve in the opening phase.
+          With movements 1.e4 e5 2.Bc4, the Bishop's Opening takes aim at the vulnerable f7 square 
+          right away in the opening phase of the game. White can choose to lead the game into either 
+          an open or closed structure with this opening, which is a forerunner to many lines in the Italian Game. 
+          To give Black something to work on right away in the beginning phase, piece development and central control are prioritized.
           </p>
 
         </div>
