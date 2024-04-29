@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Chess } from 'chess.js'; // chess.js is used for chess game mechanics
 import { Chessboard } from 'react-chessboard'; // react-chessboard for the visual chess board
 import { ThemeContext } from './ThemeContext'; // ThemeContext for theme management
@@ -15,60 +15,29 @@ const PlayVsComputer = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState('Medium'); //the current ai difficulty=> by default medium
   const [moveHistory, setMoveHistory] = useState([]);  // Record history of moves made in game
 
-    // Logic to calculate the best move based on minimax algorithm
-  // Source: Adapted from GeeksforGeeks
-  const getBestMove = (game, depth, maximizingPlayer, randomness) => {
-    const moves = game.moves();
-    let bestMove = null;
-    let bestValue = maximizingPlayer ? -Infinity : Infinity;
-
-    const weightedMoves = moves.map(move => {
-      return { move, weight: Math.random() - randomness };
-    });
-
-    weightedMoves.sort((a, b) => a.weight - b.weight);
-
-    for (const { move } of weightedMoves) {
-      const newGame = new Chess(game.fen());
-      newGame.move(move);
-      const value = minimax(newGame, depth - 1, -Infinity, Infinity, !maximizingPlayer);
-
-      if ((maximizingPlayer && value > bestValue) || (!maximizingPlayer && value < bestValue)) {
-        bestValue = value;
-        bestMove = move;
-      }
-    }
-
-    return bestMove;
-  };
-
-  useEffect(() => {
-    const makeAIMove = () => {
-      // AI makes a move if it's their turn and the game isn't over
-      if (game.turn() === 'b' && !game.isCheckmate() && !game.isDraw()) {
-        const { depth, randomness } = difficultyLevels[selectedDifficulty];
-        const bestMove = getBestMove(game, depth, true, randomness);
-        if (bestMove) {
-          game.move(bestMove);
-          setGame(new Chess(game.fen()));
-          setMoveHistory(prevHistory => [...prevHistory, bestMove]);
-        } else {
-          alert("Game Over");
+      // Evaluates the board by summing up the values of the pieces
+      const evaluateBoard = useCallback((game) => {
+        const board = game.board();
+        let totalEvaluation = 0;
+  
+        for (let row = 0; row < 8; row++) {
+          for (let col = 0; col < 8; col++) {
+            const piece = board[row][col];
+            if (piece) {
+              const value = getPieceValue(piece);
+              totalEvaluation += value;
+            }
+          }
         }
-      }
-    };
-
-    //delaying the ai move time to simulate thinking
-    setTimeout(makeAIMove, 500);
-  }, [game, selectedDifficulty, getBestMove]);
-
-
-  // Minimax algorithm with alpha-beta pruning
+  
+        return totalEvaluation;
+      }, []);
+      // Minimax algorithm with alpha-beta pruning
   // Source: Adapted from GeeksforGeeks
 
   // Define the minimax function with parameters for the current game state,
   // search depth, alpha, beta, and whether the player is maximizing or minimizing
-  const minimax = (game, depth, alpha, beta, maximizingPlayer) => {
+  const minimax = useCallback((game, depth, alpha, beta, maximizingPlayer) => {
     // Base case: If we've reached the maximum depth, a checkmate, or a draw, return the evaluation of the board
     if (depth === 0 || game.isCheckmate() || game.isDraw()) {
       return evaluateBoard(game);
@@ -106,25 +75,58 @@ const PlayVsComputer = () => {
       }
       // Return the best value that is found for this minimax call.
       return bestValue;
-    };
+    }, [evaluateBoard]);
+    
+    // Logic to calculate the best move based on minimax algorithm
+  // Source: Adapted from GeeksforGeeks
+  const getBestMove = useCallback((game, depth, maximizingPlayer, randomness) => {
+    const moves = game.moves();
+    let bestMove = null;
+    let bestValue = maximizingPlayer ? -Infinity : Infinity;
 
-    // Evaluates the board by summing up the values of the pieces
-    const evaluateBoard = (game) => {
-      const board = game.board();
-      let totalEvaluation = 0;
+    const weightedMoves = moves.map(move => {
+      return { move, weight: Math.random() - randomness };
+    }, []);
 
-      for (let row = 0; row < 8; row++) {
-        for (let col = 0; col < 8; col++) {
-          const piece = board[row][col];
-          if (piece) {
-            const value = getPieceValue(piece);
-            totalEvaluation += value;
-          }
+    weightedMoves.sort((a, b) => a.weight - b.weight);
+
+    for (const { move } of weightedMoves) {
+      const newGame = new Chess(game.fen());
+      newGame.move(move);
+      const value = minimax(newGame, depth - 1, -Infinity, Infinity, !maximizingPlayer);
+
+      if ((maximizingPlayer && value > bestValue) || (!maximizingPlayer && value < bestValue)) {
+        bestValue = value;
+        bestMove = move;
+      }
+    }
+
+    return bestMove;
+  },[minimax]);
+
+  useEffect(() => {
+    const makeAIMove = () => {
+      // AI makes a move if it's their turn and the game isn't over
+      if (game.turn() === 'b' && !game.isCheckmate() && !game.isDraw()) {
+        const { depth, randomness } = difficultyLevels[selectedDifficulty];
+        const bestMove = getBestMove(game, depth, true, randomness);
+        if (bestMove) {
+          game.move(bestMove);
+          setGame(new Chess(game.fen()));
+          setMoveHistory(prevHistory => [...prevHistory, bestMove]);
+        } else {
+          alert("Game Over");
         }
       }
-
-      return totalEvaluation;
     };
+
+    //delaying the ai move time to simulate thinking
+    setTimeout(makeAIMove, 500);
+  }, [game, selectedDifficulty, getBestMove]);
+
+
+  
+
 
   // Assigns values to pieces for evaluation
   // Source: chess.com
