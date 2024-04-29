@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* styles.css */
+body.light {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+body.dark {
+  background-color: #333;
+  color: white;
+}
+
+.nav, .footer {
+  transition: background-color 0.3s ease;
+}
+
+body.light .nav, body.light .footer {
+  background-color: #fff;
+}
+
+body.dark .nav, body.dark .footer {
+  background-color: #222;
+}
