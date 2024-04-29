@@ -41,7 +41,7 @@ const PlayVsComputer = () => {
 
     return bestMove;
   };
-  
+
   useEffect(() => {
     const makeAIMove = () => {
       // AI makes a move if it's their turn and the game isn't over
@@ -61,8 +61,6 @@ const PlayVsComputer = () => {
     //delaying the ai move time to simulate thinking
     setTimeout(makeAIMove, 500);
   }, [game, selectedDifficulty, getBestMove]);
-
-
 
 
   // Minimax algorithm with alpha-beta pruning
