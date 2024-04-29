@@ -1,5 +1,5 @@
 {
-  "homepage": "https://easy-chess.github.io/Easy-Chess",
+  "homepage": "https://muhammadyaseen11.github.io/easy-chess",
   "name": "easy-chess",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
