@@ -1,17 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Chess } from 'chess.js';
 import { Chessboard } from 'react-chessboard';
+import { ThemeContext } from './ThemeContext';
 
 const difficultyLevels = {
   'Easy': { depth: 2, randomness: 0.6 },
   'Medium': { depth: 3, randomness: 0.2 },
-  'Hard': { depth: 4, randomness: 0 }
+  'Hard': { depth: 4, randomness: 0.0 }
 };
 
 const PlayVsComputer = () => {
   const [game, setGame] = useState(new Chess());
   const [selectedDifficulty, setSelectedDifficulty] = useState('Medium');
+  const [moveHistory, setMoveHistory] = useState([]);
 
+  // useEffect(() => {
+  //   const makeAIMove = () => {
+  //     if (game.turn() === 'b' && !game.isCheckmate() && !game.isDraw()) {
+  //       const { depth, randomness } = difficultyLevels[selectedDifficulty];
+  //       const bestMove = getBestMove(game, depth, true, randomness);
+  //       if (bestMove) {
+  //         game.move(bestMove);
+  //         setGame(new Chess(game.fen()));
+  //       }
+  //       else
+  //       {
+  //         alert("Game Over")
+  //       }
+  //     }
+     
+  //   };
   useEffect(() => {
     const makeAIMove = () => {
       if (game.turn() === 'b' && !game.isCheckmate() && !game.isDraw()) {
@@ -20,13 +38,11 @@ const PlayVsComputer = () => {
         if (bestMove) {
           game.move(bestMove);
           setGame(new Chess(game.fen()));
-        }
-        else
-        {
-          alert("Game Over")
+          setMoveHistory(prevHistory => [...prevHistory, bestMove]);
+        } else {
+          alert("Game Over");
         }
       }
-     
     };
 
     setTimeout(makeAIMove, 500);
@@ -37,7 +53,6 @@ const PlayVsComputer = () => {
     let bestMove = null;
     let bestValue = maximizingPlayer ? -Infinity : Infinity;
   
-    // Adjust how randomness affects move choice
     const weightedMoves = moves.map(move => {
       return { move, weight: Math.random() - randomness };
     });
@@ -123,12 +138,14 @@ const PlayVsComputer = () => {
     const move = {
       from: sourceSquare,
       to: targetSquare,
-      promotion: 'q' // Always promote to a queen for simplicity
+      promotion: 'q'
     };
 
     const gameCopy = new Chess(game.fen());
     const result = gameCopy.move(move);
     setGame(gameCopy);
+    //
+    setMoveHistory(prevHistory => [...prevHistory, move]);
 
     if (result === null) {
       alert('Invalid move. Please try again.');
@@ -138,10 +155,25 @@ const PlayVsComputer = () => {
 
   const resetGame = () => {
     setGame(new Chess());
+    setMoveHistory([]);
   };
 
   const handleDifficultyChange = (e) => {
     setSelectedDifficulty(e.target.value);
+  };
+
+  const undoMove = () => {
+    if (moveHistory.length > 0) {
+      const updatedHistory = moveHistory.slice(0, -2);
+      setMoveHistory(updatedHistory);
+
+      const newGame = new Chess();
+      updatedHistory.forEach(move => {
+        newGame.move(move);
+      });
+
+      setGame(newGame);
+    }
   };
 
   const getStatusText = () => {
@@ -154,41 +186,51 @@ const PlayVsComputer = () => {
     }
   };
 
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4 text-center ">Chess Against AI</h2>
-    <div className="container mx-auto p-8 flex flex-col items-center justify-center">
+  const { theme } = useContext(ThemeContext); 
 
-      <div className="flex items-center">
-        <Chessboard
-          position={game.fen()}
-          onPieceDrop={onDrop}
-          boardWidth={500}
-          customBoardStyle={{
-            borderRadius: '5px',
-            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
-          }}
-        />
-        <div className="ml-2">
-        <div className="text-xl font-bold mb-4">{getStatusText()}</div>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded mb-4" onClick={resetGame}>
-            Reset
-          </button>
-          <div className="mt-2">
-            <label className="block text-sm font-medium text-gray-700">Difficulty:</label>
-            <select
-              value={selectedDifficulty}
-              onChange={handleDifficultyChange}
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-            >
-              {Object.keys(difficultyLevels).map(level => (
-                <option key={level} value={level}>{level}</option>
-              ))}
-            </select>
+ return (
+    <div>
+      <h2 className={`text-2xl font-bold mb-4 text-center ${theme === 'dark' ? 'bg-gray-800 text-white' : 'text-gray-800'}`}>Player Vs Computer</h2>
+      <div className="container mx-auto p-8 flex flex-col items-center justify-center">
+        <div className="flex items-center">
+          <Chessboard
+            position={game.fen()}
+            onPieceDrop={onDrop}
+            boardWidth={500}
+            customBoardStyle={{
+              borderRadius: '5px',
+              boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)'
+            }}
+          />
+          <div className="ml-8">
+            <div className={`text-l font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'text-gray-800'}`}>{getStatusText()}</div>
+            <div className="space-y-8">
+              <div>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded-full transition duration-300 ease-in-out mb-4" onClick={resetGame}>
+                  Reset
+                </button>
+              </div>
+              <div>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded-full transition duration-300 ease-in-out mb-4" onClick={undoMove} disabled={moveHistory.length === 0}>
+                  Undo
+                </button>
+              </div>
+              <div>
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'bg-gray-800 text-white' : 'text-gray-800'}`}>Difficulty:</label>
+                <select
+                  value={selectedDifficulty}
+                  onChange={handleDifficultyChange}
+                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                >
+                  {Object.keys(difficultyLevels).map(level => (
+                    <option key={level} value={level}>{level}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

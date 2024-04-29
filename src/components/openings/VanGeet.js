@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
 
-const SicilianDefense = () => {
+const VanGeet = () => {
   const {theme} = useContext(ThemeContext);
   return (
     <div className="container mx-auto px-6 py-8">
-      <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Sicilian Defense</h1>
+      <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Van Geet Opening</h1>
       <div className="gap-8">
         <div className="flex-initial w-2/3">
           <iframe
             width="100%"
-            height="450"  // Increased height for better visibility
-            src="https://www.youtube.com/embed/qM4e7g2RukI"
+            height="450"
+            src="https://www.youtube.com/embed/OEN1DwnNg3Q"
             title="Sicilian Defense Tutorial"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -31,4 +30,4 @@ const SicilianDefense = () => {
   );
 };
 
-export default SicilianDefense;
+export default VanGeet;

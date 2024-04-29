@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from './ThemeContext';
 import { useNavigate } from 'react-router-dom';
 import SicilianDefense from '../images/sicilian.png';
 import FrenchDefense from '../images/french.png';
@@ -69,31 +70,44 @@ const openings = [
 ];
 
 const ChessOpenings = () => {
+    const {theme} = useContext(ThemeContext);
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
 
-    return (
-        <div className="container mx-auto px-6 py-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-8">Chess Openings</h1>
-            <p className="text-xl text-gray-700 mb-8">
-                Explore the world of chess openings. Understand the principles behind opening strategies and learn about popular openings.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {openings.map((opening) => (
-                    <div
-                        key={opening.name}
+    const filteredOpenings = searchTerm.length === 0 ? openings : openings.filter(opening =>
+        opening.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
-                        className="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
-                        onClick={() => navigate(opening.route)}
-                    >
-                        <img src={opening.image} alt={opening.name} className="w-full object-cover" />
-                        <div className="p-6">
-                            <h2 className="text-2xl font-bold text-gray-800">{opening.name}</h2>
+        return (
+            <div className="container mx-auto px-6 py-8">
+      <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Chess Openings</h1>
+                <input
+                    type="text"
+                    placeholder="Search"
+                    className="mb-8 px-4 py-2 border rounded-lg w-full"
+                    onChange={e => setSearchTerm(e.target.value)}
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredOpenings.length > 0 ? (
+                        filteredOpenings.map((opening) => (
+                            <div
+                                key={opening.name}
+                                className="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+                                onClick={() => navigate(opening.route)}
+                            >
+                                <img src={opening.image} alt={opening.name} className="w-full object-cover" />
+                                <div className="p-6">
+                                    <h2 className="text-2xl font-bold text-gray-800">{opening.name}</h2>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="col-span-full text-center">
+                            <p className="text-xl">No Results</p>
                         </div>
-                    </div>
-                ))}
+                    )}
+                </div>
             </div>
-        </div>
-    );
-};
-
-export default ChessOpenings;
+        );
+    };
+    
+    export default ChessOpenings;

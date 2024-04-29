@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from './ThemeContext';
 
-//following images have been taken from wikipedia
+//these images have been taken from wikipedia
 import ForkImage from '../images/fork.png';
 import PinImage from '../images/pin.png';
 import SkewerImage from '../images/skewer.png';
@@ -10,7 +11,6 @@ import DoubleCheckImage from '../images/ddcheck.png';
 import OverloadingImage from '../images/overloading.png';
 import DeflectionImage from '../images/deflection.png';
 import DecoyImage from '../images/decoy.png';
-
 
 const tactics = [
   { name: "Forks", description: "Using one piece to attack two or more enemy pieces simultaneously.", image: ForkImage, route: "/tactics/forks" },
@@ -24,28 +24,42 @@ const tactics = [
 ];
 
 const ChessTactics = () => {
+  const {theme} = useContext(ThemeContext);
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredTactics = searchTerm.length === 0 ? tactics : tactics.filter(tactic =>
+    tactic.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className="container mx-auto px-6 py-8">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Chess Tactics</h1>
-      <p className="text-xl text-gray-700 mb-8">
-        Learn key tactical concepts like forks, pins, skewers, and more to enhance your gameplay.
-      </p>
+      <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Chess Tactics</h1>
+      <input
+        type="text"
+        placeholder="Search Tactics"
+        className="mb-8 px-4 py-2 border rounded-lg w-full"
+        onChange={e => setSearchTerm(e.target.value)}
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {tactics.map((tactic) => (
-          <div
-            key={tactic.name}
-            className="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
-            onClick={() => navigate(tactic.route)}
-          >
-            <img src={tactic.image} alt={tactic.name} className="w-full object-cover" />
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800">{tactic.name}</h2>
-              <p className="text-gray-600">{tactic.description}</p>
+        {filteredTactics.length > 0 ? (
+          filteredTactics.map((tactic) => (
+            <div
+              key={tactic.name}
+              className="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+              onClick={() => navigate(tactic.route)}
+            >
+              <img src={tactic.image} alt={tactic.name} className="w-full object-cover" />
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-gray-800">{tactic.name}</h2>
+                <p className="text-gray-600">{tactic.description}</p>
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center">
+            <p className="text-xl">No Results</p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

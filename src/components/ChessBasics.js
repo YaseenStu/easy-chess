@@ -1,14 +1,11 @@
-import React from 'react';
-
+import React, {useContext} from 'react';
+import { ThemeContext } from './ThemeContext';
 const ChessBasics = () => {
+  const { theme } = useContext(ThemeContext); 
   return (
     <div className="container mx-auto px-6 py-8">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Chess Basics</h1>
-      <p className="text-xl text-gray-700 mb-8">
-        This page is dedicated to teaching the fundamentals of chess. Here, you can learn about different chess pieces, their movements, and basic strategies to get started with chess.
-      </p>
+      <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Chess Basics</h1>
       
-      {/* Video and Description Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <VideoSection
           title="Introduction to Chess"
@@ -35,7 +32,6 @@ const ChessBasics = () => {
   );
 };
 
-// Component for video sections
 const VideoSection = ({ title, description, videoId }) => {
   return (
     <div className="bg-white rounded shadow p-4 hover:scale-105 transition transform duration-300 ease-in-out">
