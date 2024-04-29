@@ -33,7 +33,7 @@ const PlayVsComputer = () => {
 
     //delaying the ai move time to simulate thinking
     setTimeout(makeAIMove, 500);
-  }, [game, selectedDifficulty]);
+  }, [game, selectedDifficulty, getBestMove]);
 
   // Logic to calculate the best move based on minimax algorithm
   // Source: Adapted from GeeksforGeeks
