@@ -15,7 +15,7 @@ const PlayVsComputer = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState('Medium'); //the current ai difficulty=> by default medium
   const [moveHistory, setMoveHistory] = useState([]);  // Record history of moves made in game
 
-   // Logic to calculate the best move based on minimax algorithm
+    // Logic to calculate the best move based on minimax algorithm
   // Source: Adapted from GeeksforGeeks
   const getBestMove = (game, depth, maximizingPlayer, randomness) => {
     const moves = game.moves();
@@ -41,6 +41,26 @@ const PlayVsComputer = () => {
 
     return bestMove;
   };
+
+  useEffect(() => {
+    const makeAIMove = () => {
+      // AI makes a move if it's their turn and the game isn't over
+      if (game.turn() === 'b' && !game.isCheckmate() && !game.isDraw()) {
+        const { depth, randomness } = difficultyLevels[selectedDifficulty];
+        const bestMove = getBestMove(game, depth, true, randomness);
+        if (bestMove) {
+          game.move(bestMove);
+          setGame(new Chess(game.fen()));
+          setMoveHistory(prevHistory => [...prevHistory, bestMove]);
+        } else {
+          alert("Game Over");
+        }
+      }
+    };
+
+    //delaying the ai move time to simulate thinking
+    setTimeout(makeAIMove, 500);
+  }, [game, selectedDifficulty, getBestMove]);
 
 
   // Minimax algorithm with alpha-beta pruning
@@ -121,28 +141,6 @@ const PlayVsComputer = () => {
       const value = pieceValues[piece.type];
       return piece.color === 'w' ? value : -value;
     };
-
-  useEffect(() => {
-    const makeAIMove = () => {
-      // AI makes a move if it's their turn and the game isn't over
-      if (game.turn() === 'b' && !game.isCheckmate() && !game.isDraw()) {
-        const { depth, randomness } = difficultyLevels[selectedDifficulty];
-        const bestMove = getBestMove(game, depth, true, randomness);
-        if (bestMove) {
-          game.move(bestMove);
-          setGame(new Chess(game.fen()));
-          setMoveHistory(prevHistory => [...prevHistory, bestMove]);
-        } else {
-          alert("Game Over");
-        }
-      }
-    };
-
-    //delaying the ai move time to simulate thinking
-    setTimeout(makeAIMove, 500);
-  }, [game, selectedDifficulty, getBestMove]);
-
- 
 
     // Handles piece drop on the chessboard
     // source: npmjs.com
