@@ -1,10 +1,14 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { ThemeContext, ThemeProvider } from './components/ThemeContext';
 import HomePage from './HomePage';
 import About from './About';
 import Learn from './Learn';
 import Settings from './components/SettingsPage'
+
+import ContactPage from './components/ContactPage';
+import PrivacyPage from './components/PrivacyPage.';
+
 import PlayVsComputer from './components/PlayVsComputer';
 import PlayVsPlayer from './components/PlayVsPlayer';
 import PracticePage from './components/PracticePage';
@@ -81,98 +85,108 @@ const ApplicationContent = () => {
 
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
-    <nav className="bg-white shadow">
-      {/* styling navbar */}
-      <div className={`${theme === 'dark' ? 'bg-gray-600' : 'bg-white'} shadow`}>
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+      <nav className="bg-white shadow">
+        {/* styling navbar */}
+        <div className={`${theme === 'dark' ? 'bg-gray-600' : 'bg-white'} shadow`}>
+          <div className="container mx-auto px-6 py-3 flex justify-between items-center">
 
-        <div className="flex items-center space-x-4 ">
-          <NavLink to="/" className="p-1"><img src={HomeIcon} alt="Home" className='h-8 w-8' /></NavLink>
-          <NavLink to="/learn" className="p-1"><img src={LearnIcon} alt="Learn" className='h-8 w-8' /></NavLink>
-          <NavLink to="/about" className="p-1"><img src={AboutIcon} alt="About" className='h-8 w-8' /></NavLink>
-        </div>
+            <div className="flex items-center space-x-4 ">
+              <NavLink to="/" className="p-1"><img src={HomeIcon} alt="Home" className='h-8 w-8' /></NavLink>
+              <NavLink to="/learn" className="p-1"><img src={LearnIcon} alt="Learn" className='h-8 w-8' /></NavLink>
+              <NavLink to="/about" className="p-1"><img src={AboutIcon} alt="About" className='h-8 w-8' /></NavLink>
+            </div>
 
-        <div className="flex items-center justify-center">
-          <img src={Logo} alt="Easy Chess" className="rounded-full bg-gray-200 h-12 w-12 flex items-center justify-center" />
-          <span className="font-bold text-xl ml-2">Easy Chess</span>
-        </div>
+            <div className="flex items-center justify-center">
+              <img src={Logo} alt="Easy Chess" className="rounded-full bg-gray-200 h-12 w-12 flex items-center justify-center" />
+              <span className="font-bold text-xl ml-2">Easy Chess</span>
+            </div>
 
-        <div className='flex item-center space-x-4'>
-          <NavLink to="/settings"><img src={SettingsIcon} alt="Settings" className="h-8 w-8" /></NavLink>
-          <button onClick={toggleTheme}>
+            <div className='flex item-center space-x-4'>
+              <NavLink to="/settings"><img src={SettingsIcon} alt="Settings" className="h-8 w-8" /></NavLink>
+              <button onClick={toggleTheme}>
                 <img src={MoonIcon} alt="Toggle Theme" className="h-8 w-8" />
               </button>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
-    </nav>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/learn" element={<Learn />} />
-      <Route path="/settings" element={<Settings />} />
+      </nav>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/learn" element={<Learn />} />
+        <Route path="/settings" element={<Settings />} />
 
-      <Route path="/play-vs-computer" element={<PlayVsComputer />} />
-      <Route path="/play-vs-player" element={<PlayVsPlayer />} />
-      <Route path="/practice" element={<PracticePage />} />
+        <Route path="/play-vs-computer" element={<PlayVsComputer />} />
+        <Route path="/play-vs-player" element={<PlayVsPlayer />} />
+        <Route path="/practice" element={<PracticePage />} />
 
-      <Route path="/chess-basics" element={<ChessBasics />} />
+        <Route path="/chess-basics" element={<ChessBasics />} />
 
-      <Route path="/chess-tactics" element={<ChessTactics />} />
-      <Route path="/tactics/forks" element={<Fork />} />
-      <Route path="/tactics/pins" element={<Pins />} />
-      <Route path="/tactics/skewers" element={<Skewers />} />
-      <Route path="/tactics/discovered-attacks" element={<DiscoveredAttack />} />
-      <Route path="/tactics/double-checks" element={<DoubleChecks />} />
-      <Route path="/tactics/overloading" element={<Overloading />} />
-      <Route path="/tactics/deflection" element={<Deflection />} />
-      <Route path="/tactics/decoy" element={<Decoy />} />
+        <Route path="/chess-tactics" element={<ChessTactics />} />
+        <Route path="/tactics/forks" element={<Fork />} />
+        <Route path="/tactics/pins" element={<Pins />} />
+        <Route path="/tactics/skewers" element={<Skewers />} />
+        <Route path="/tactics/discovered-attacks" element={<DiscoveredAttack />} />
+        <Route path="/tactics/double-checks" element={<DoubleChecks />} />
+        <Route path="/tactics/overloading" element={<Overloading />} />
+        <Route path="/tactics/deflection" element={<Deflection />} />
+        <Route path="/tactics/decoy" element={<Decoy />} />
 
-      <Route path="/chess-openings" element={<ChessOpenings />} />
+        <Route path="/chess-openings" element={<ChessOpenings />} />
 
-      <Route path="/openings/sicilian-defense" element={<SicilianDefense />} />
-      <Route path="/openings/french-defense" element={<FrenchDefense />} />
-      <Route path="/openings/english-opening" element={<EnglishOpening />} />
-      <Route path="/openings/ruy-lopez" element={<RuyLopez />} />
-      <Route path="/openings/caro-kann-defense" element={<CaroKannDefense />} />
-      <Route path="/openings/italian-game" element={<ItalianGame />} />
-      <Route path="/openings/scandinavian-defense" element={<ScandinavianDefense />} />
-      <Route path="/openings/bishops-opening" element={<BishopOpening />} />
-      <Route path="/openings/catalan" element={<Catalan />} />
-      <Route path="/openings/dutch-defense" element={<Dutch />} />
-      <Route path="/openings/four-knights-game" element={<FourKnightsGame />} />
-      <Route path="/openings/kings-gambit-accepted" element={<KingGAccepted />} />
-      <Route path="/openings/kings-indian-attack" element={<KingIndianAttack />} />
-      <Route path="/openings/kings-indian-defense" element={<KingIndianDefense />} />
-      <Route path="/openings/london-system" element={<LondonSystem />} />
-      <Route path="/openings/ponziani-opening" element={<Ponziani />} />
-      <Route path="/openings/pirc-defense" element={<Pirc />} />
-      <Route path="/openings/philidor-defense" element={<Philidor />} />
-      <Route path="/openings/nimzo-indian" element={<NimzoIndian />} />
-      <Route path="/openings/queens-gambit-accepted" element={<QueenGAccepted />} />
-      <Route path="/openings/queens-gambit-declined" element={<QueenGDeclined />} />
-      <Route path="/openings/russian-defense" element={<RussDef />} />
-      <Route path="/openings/bongcloud" element={<Bongcloud />} />
-      <Route path="/openings/van-geet-opening" element={<VanGeet />} />
-      <Route path="/openings/scotch-game" element={<Scotch />} />
-      <Route path="/openings/vienna-game" element={<Vienna />} />
-      <Route path="/openings/trompowsky-attack" element={<Trompowsky />} />
-      <Route path="/openings/benko-gambit" element={<Benko />} />
-      <Route path="/openings/reti-opening" element={<Reti />} />
-      <Route path="/openings/birds-opening" element={<Bird />} />
-      <Route path="/openings/polish-opening" element={<Polish />} />
-      <Route path="/openings/grob-opening" element={<Grob />} />
+        <Route path="/openings/sicilian-defense" element={<SicilianDefense />} />
+        <Route path="/openings/french-defense" element={<FrenchDefense />} />
+        <Route path="/openings/english-opening" element={<EnglishOpening />} />
+        <Route path="/openings/ruy-lopez" element={<RuyLopez />} />
+        <Route path="/openings/caro-kann-defense" element={<CaroKannDefense />} />
+        <Route path="/openings/italian-game" element={<ItalianGame />} />
+        <Route path="/openings/scandinavian-defense" element={<ScandinavianDefense />} />
+        <Route path="/openings/bishops-opening" element={<BishopOpening />} />
+        <Route path="/openings/catalan" element={<Catalan />} />
+        <Route path="/openings/dutch-defense" element={<Dutch />} />
+        <Route path="/openings/four-knights-game" element={<FourKnightsGame />} />
+        <Route path="/openings/kings-gambit-accepted" element={<KingGAccepted />} />
+        <Route path="/openings/kings-indian-attack" element={<KingIndianAttack />} />
+        <Route path="/openings/kings-indian-defense" element={<KingIndianDefense />} />
+        <Route path="/openings/london-system" element={<LondonSystem />} />
+        <Route path="/openings/ponziani-opening" element={<Ponziani />} />
+        <Route path="/openings/pirc-defense" element={<Pirc />} />
+        <Route path="/openings/philidor-defense" element={<Philidor />} />
+        <Route path="/openings/nimzo-indian" element={<NimzoIndian />} />
+        <Route path="/openings/queens-gambit-accepted" element={<QueenGAccepted />} />
+        <Route path="/openings/queens-gambit-declined" element={<QueenGDeclined />} />
+        <Route path="/openings/russian-defense" element={<RussDef />} />
+        <Route path="/openings/bongcloud" element={<Bongcloud />} />
+        <Route path="/openings/van-geet-opening" element={<VanGeet />} />
+        <Route path="/openings/scotch-game" element={<Scotch />} />
+        <Route path="/openings/vienna-game" element={<Vienna />} />
+        <Route path="/openings/trompowsky-attack" element={<Trompowsky />} />
+        <Route path="/openings/benko-gambit" element={<Benko />} />
+        <Route path="/openings/reti-opening" element={<Reti />} />
+        <Route path="/openings/birds-opening" element={<Bird />} />
+        <Route path="/openings/polish-opening" element={<Polish />} />
+        <Route path="/openings/grob-opening" element={<Grob />} />
 
-    </Routes>
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
 
-    <footer className={`${theme === 'dark' ? 'bg-gray-600' : 'bg-white'} border-t border-gray-400 shadow`}>
-      <div className="container mx-auto px-6 py-4">
-        <div className="text-center">
-          <p className={`${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>&copy; 2024 Easy Chess. All rights reserved.</p>
+
+      </Routes>
+
+      <footer className={`${theme === 'dark' ? 'bg-gray-600' : 'bg-white'} border-t border-gray-400 shadow`}>
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex justify-end px-2 space-x-4">
+            <NavLink to="/contact" className={`${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>Contact</NavLink>
+            <NavLink to="/privacy" className={`${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>Privacy Policy</NavLink>
+          </div>
+          <div className="text-center mt-4">
+            <p className={`${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>&copy; 2024 Easy Chess. All rights reserved.</p>
+          </div>
         </div>
-      </div>
-    </footer>
-  </div>
+      </footer>
+
+
+    </div>
 
   );
 }

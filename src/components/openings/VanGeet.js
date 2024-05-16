@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
 
 const VanGeet = () => {
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="container mx-auto px-6 py-8">
       <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Van Geet Opening</h1>

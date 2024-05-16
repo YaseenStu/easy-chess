@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
 
 const Pins = () => {
-    const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="container mx-auto px-6 py-8">
       <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Understanding Pins in Chess</h1>
@@ -28,12 +28,6 @@ const Pins = () => {
               <li><strong>Absolute pin:</strong> where the piece is pinned against the king, making it illegal to move the pinned piece because it would put the king in check.</li>
               <li><strong>Relative pin:</strong> where moving the pinned piece would expose a more valuable piece to capture but is not illegal.</li>
             </ul>
-          </p>
-          <p className="text-xl text-gray-700 mt-4">
-            To effectively use pins in your games, look for opportunities where your opponent’s pieces are aligned on the same file, rank, or diagonal. Bishops, rooks, and queens are the best pieces to create pins due to their long-range capabilities.
-          </p>
-          <p className="text-xl text-gray-700 mt-4">
-            Defending against pins involves moving the attacked piece out of alignment, placing a less valuable piece in front of the pinned piece, or counter-attacking to relieve pressure. Awareness and proactive defense are key to countering this tactic.
           </p>
         </div>
       </div>

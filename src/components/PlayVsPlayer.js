@@ -75,7 +75,6 @@ const PlayVsPlayer = () => {
               <div className={` text-lg font-semibold ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>{getStatusText()}
               </div>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded-full transition duration-300 ease-in-out mb-4" onClick={resetGame}>
-              {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out" onClick={resetGame}> */}
                 Reset
               </button>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded-full transition duration-300 ease-in-out mb-4" onClick={undoMove} disabled={moveHistory.length === 0}>

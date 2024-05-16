@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useEffect } from 'react';
 
 export const ThemeContext = createContext();
@@ -8,7 +7,7 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-    document.body.className = theme;  // Apply the theme class to the body
+    document.body.className = theme;
   }, [theme]);
 
   return (

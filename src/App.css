@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -48,14 +49,17 @@ body.dark {
   color: white;
 }
 
-.nav, .footer {
+.nav,
+.footer {
   transition: background-color 0.3s ease;
 }
 
-body.light .nav, body.light .footer {
+body.light .nav,
+body.light .footer {
   background-color: #fff;
 }
 
-body.dark .nav, body.dark .footer {
+body.dark .nav,
+body.dark .footer {
   background-color: #222;
 }

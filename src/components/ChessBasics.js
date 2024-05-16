@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 const ChessBasics = () => {
-  const { theme } = useContext(ThemeContext); 
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="container mx-auto px-6 py-8">
       <h1 className={`text-4xl font-bold mb-8 ${theme === 'dark' ? 'bg-gray-800 text-white' : ' text-gray-800'}`}>Chess Basics</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <VideoSection
           title="Introduction to Chess"

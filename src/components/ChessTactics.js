@@ -24,7 +24,7 @@ const tactics = [
 ];
 
 const ChessTactics = () => {
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
